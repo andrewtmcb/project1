@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 4 Website Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+
+  body{
+    background-color: lightgrey;
+  }
+  .jumbotron{
+    background-image: url('https://cdn-images-1.medium.com/max/1600/1*CQPNQqE4X2Jh5XomWQrWQQ.png')
+  }
+  .col-sm-4{
+    min-width:300px;
+  }
+  .empimg {
+    height: 250px;
+    width: 250px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background: #aaa;
+  }
+  .ximg {
+    height: 350px;
+    max-width: 642px;
+    background: #aaa;
+  }
+  #empinfo{
+    margin-top: 10px;
+    margin-bottom: 18px;
+  }
+  #addressinfo > p,b {
+    margin-bottom: 0px;
+  }
+  #supervisorinfo > p {
+    margin-bottom: 0px;
+  }
+  #empemail{
+    margin-top: 16px;
+  }
+
+  </style>
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1 style="color:white">Q-Systems</h1>
+  <h3 style ="color:gold">Defining The Computing Of Tomorrow</h3>
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="app/logout">Logout</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Guru</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Hubble Portal</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">TPS Reports</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container" style="margin-top:30px">
+  <div class="row justify-content-center">
+    <div class="col-sm-4">
+      <h3 id="hellouser"></h3>
+      <h5 id="userrole"></h5>
+      <div ><img id="empimg" src ="" style="width:250px;height:250px;></div>
+      <div id="empinfo">
+        <p id="empid"><b>Employee ID:</b></p>
+        <div id="addressinfo">
+          <p id="empaddress"><b>Address:</b> </p>
+          <p id="empcitystate"></p>
+          <p id="empzip"></p>
+        </div>
+        <p id="empemail"><b>Email:</b> <a style ="color:blue" class="email"  href="mailto:polochan2p@qsystems.com?subject = Feedback&body = Message"></a></p>
+        <div id="supervisorinfo">
+          <p id="empsup"><b>Supervisor:</b> </p>
+          <a style ="color:blue" class="email" id="empsupemail" href="mailto:nculshaw2q@qsystems.com?subject = Feedback&body = Message"></a>
+        </div>
+      </div>
+      <br>
+      <h3>Portal</h3>
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="app/home">My Homepage</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="newremb" href="form.html">Submit New Rembursment</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" href="#">401k</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" href="#">Timesheets</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" href="#">Submit Helpdesk ticket</a>
+          </li>
+          <li class="nav-item" >
+            <a class="nav-link" href="#">Q-Summit Registration</a>
+          </li>
+        </ul>
+      <hr class="d-sm-none">
+    </div>
+    <div class="col-sm-8 mx-auto">
+      <h1 style ="color:darkslategray">Register for Q-Summit</h1>
+      <h5>This years topic is quantum encryption -- <u>Attendance Manditory</u></h5>
+      <div class="ximg" ><img src ="https://1.bp.blogspot.com/-WkHHlBAllfc/WFuln6QzUHI/AAAAAAAAqqc/pEdNGvQtOfYTHZB6TP3x_kZabUDm8QshgCLcB/s728-e100/quantum-computing-encryption.png" style="height:350px;"></div>
+      <p><b>Q-Summit 2019</b></p>
+      <p>Be prepared to take notes, and more importantly have fun! This year's key-note speaker is Philip Ian Staker of MIT. He will be discussing quantum cryptography; How the quantum age will make guess-and-check attack on hashing algorythms possible, and the q-bit encyrption techniques which will be require to stay a step ahead.</p>
+      <br>
+      <div class="d-flex justify-content-center">
+        <h2>Rembersments Summary</h2>
+      </div>
+      <div class="d-flex justify-content-center">
+        <h5>Rembersment Summary for 2019</h5>
+      </div>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Reference #</th>
+            <th scope="col">Date Submitted</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+          <!--
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+          -->
+      </table>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Remaining Avaliable Funds</th>
+            <th scope="col">Total Rembursed</th>
+            <th scope="col">Total Pending</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td id="remainingfunds"></td>
+            <td id="rembursedtotal"></td>
+            <td id="rembursedpending"></td>
+          </tr>
+        </tbody>
+      </table>
+      <!--
+      TODO:
+      include additional table for sups and bcs for rembursment approvals
+      -->
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <p>Footer</p>
+</div>
+<script >
+class User {
+
+	   /**
+	    *
+	    * This is a helper class to establish a user as an object
+	    *
+	    * @param {string?/int?} userId
+	    * @param {strirng?/int?} empLevel
+	    * @param {string} firstname
+	    * @param {string} lastname
+	    * @param {string} fullMailingAdress
+	    * @param {String} email
+	    * @param {String} imgurl
+	    * @param {number} supId
+	    */
+	    constructor(userId, empLevel, firstname, lastname, fullMailingAdress, email,imgurl,supId) {
+	        this.userId = userId;
+	        this.empLevel = empLevel;
+	        this.firstname = firstname;
+	        this.lastname = lastname;
+	        this.fullMailingAdress = fullMailingAdress;
+	        this.email = email;
+	        this.imgurl = imgurl;
+	        this.supId = supId;
+
+	    }
+	}
+
+
+
+
+
+	var user = new User();
+	var sup = new User();
+
+function empLevelToUserRole(empLevel){
+ //x1 standard employee //x2 supervisor //x3 department head
+	  //1 sales //2 marketing //3 engineering //4 human resources //5 benefits coordinator
+ let userrole ="";
+   switch (empLevel) {
+     case 11:
+       userrole = "Sales";
+       break;
+     case 12:
+       userrole = "Sales Supervisor";
+       break;
+     case 13:
+       userrole = "Head of Sales";
+       break;
+     case 21:
+       userrole = "Marketing";
+       break;
+     case 22:
+       userrole = "Marketing Supervisor";
+       break;
+     case 23:
+       userrole = "Head of Marketing";
+       break;
+     case  31:
+       userrole = "Engineering";
+       break;
+     case 32:
+       userrole = "Engineering Supervisor";
+       break;
+     case 33:
+       userrole = "Head of Engineering";
+       break;
+     case 41:
+       userrole = "Human Resources";
+       break;
+     case 42:
+       userrole = "HR Supervisor";
+       break;
+     case 43:
+       userrole = "Head of HR";
+       break;
+     case 51:
+       userrole = "Benefits Coordinator";
+       break;
+     case 53:
+       userrole = "Head of Benefits";
+       break;
+ }
+ return userrole;
+
+}
+
+function getBenefitsInfo(){
+//Step 1. Create XHR
+let xhr = new XMLHttpRequest();
+
+//Step 2. Define event handler of on ready state change
+   xhr.onreadystatechange = function(){
+
+     if (xhr.readyState === 4 && xhr.status === 200){
+
+        bene = JSON.parse(xhr.responseText);
+      }
+
+  }
+
+  xhr.open("GET", "/Project1/app/user", true);
+  xhr.send();
+ }
+
+
+ function populateSup(supid){
+ //Step 1. Create XHR
+ let xhr = new XMLHttpRequest();
+
+ //Step 2. Define event handler of on ready state change
+     xhr.onreadystatechange = function(){
+
+       if (xhr.readyState === 4 && xhr.status === 200){
+
+         	sup = JSON.parse(xhr.responseText);
+
+          //
+
+         document.getElementById("empsup").innerHTML = "<b>Supervisor:</b> "+sup.firstname +" "+sup.lastname;
+         //sup email info
+         document.getElementById("empemail").innerHTML = "<b>Email:</b> "+user.email;
+         document.getElementById("empemail").href = user.email;
+
+        }
+
+    }
+
+    xhr.open("GET", "app/xuser/"+supid, true);
+    xhr.send();
+   }
+
+
+	function populateUser(){
+	    //AJAX - Asynchronous JavaScript and XML
+
+	    //Step 1. Create XHR
+	    let xhr = new XMLHttpRequest();
+
+	    //Step 2. Define event handler of on ready state change
+	    xhr.onreadystatechange = function(){
+
+	        if (xhr.readyState === 4 && xhr.status === 200){
+
+	           user = JSON.parse(xhr.responseText);
+
+          //call into populateSup
+          populateSup(user.supId)
+          //title edit
+          document.getElementById("hellouser").innerHTML = "Hello, "+ user.firstname +" "+user.lastname;
+	      	  document.getElementById("empzip").innerHTML= empLevelToUserRole(user.empLevel);
+         //image source
+	      	  document.getElementById("empimg").src = user.imgurl+".jpg";
+
+	      	  //emp name
+	      	  var addressArray =  user.fullMailingAdress.split(";");
+	      	  document.getElementById("empid").innerHTML = "<b>Employee ID:</b> "+user.userId;
+
+	      	  //emp adress info
+	      	  document.getElementById("empaddress").innerHTML = "<b>Address:</b> "+addressArray[0];
+	      	  document.getElementById("empcitystate").innerHTML = addressArray[1];
+	      	  document.getElementById("empzip").innerHTML= addressArray[2];
+
+         //email info
+          document.getElementById("empemail").innerHTML = "<b>Email:</b> "+user.email;
+         document.getElementById("empemail").href = user.email;
+	            console.log(user);
+
+	        }
+
+	    }
+
+	    xhr.open("GET", "app/user", true);
+	    xhr.send();
+
+	}
+
+	window.onload = function(){
+		populateUser();
+		
+		
+	};
+
+
+	  
+
+	  //WARNING: LOOKOUT FOR THIS METHOD, likely can be optimized first place
+	  //to look if slow on load
+
+
+</script>
+</body>
+</html>
