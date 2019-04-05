@@ -24,10 +24,11 @@ public class BenefitsServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	RembursmentService reimbServ = new RembursmentService();
+	
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getPathInfo();
-		System.out.println(name.substring(1));
+		//Coming Soon
 	}
 
 	@Override
@@ -87,6 +88,15 @@ public class BenefitsServlet extends HttpServlet {
 			}
 		
 	}
+
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doDelete(req, resp);
+	}
+	
+	
+	
 	
 	
 	

@@ -1,15 +1,18 @@
 package com.revature.services;
 
+import java.util.List;
+
 import com.revature.doa.ReimbursementDOAImpl;
 import com.revature.doa.UserDOAImpl;
 import com.revature.pojos.Reimbursement;
 import com.revature.pojos.User;
 
 public class RembursmentService {
-	UserService us = new UserService();
-	ReimbursementDOAImpl reimDOA = new ReimbursementDOAImpl();
+	static ReimbursementDOAImpl reimDOA;
 	
-	public String genRembId(int userId, int rawid) {
+	
+	public static String genRembId(int userId, int rawid) {
+		UserService us = new UserService();
 		User user = us.userX(userId);
 		String rembId = String.valueOf(userId);
 		if(userId%10 == 1) {
@@ -27,7 +30,7 @@ public class RembursmentService {
 		return rembId+String.valueOf(rawid);
 	}
 	
-	public int calcBICid(int status,String rembId) {
+	public static int calcBICid(int status,String rembId) {
 		int userId = Integer.valueOf(rembId.substring(0,2));
 		int supId = Integer.valueOf(rembId.substring(2,4));
 		int dhId = Integer.valueOf(rembId.substring(4,6));
@@ -138,6 +141,46 @@ public class RembursmentService {
 	
 	
 
+	public static int gradingFormatConverter(String gradingFormat) {
+		switch (gradingFormat) { 
+        case "Pass/Fail": 
+        	return 1; 
+             
+        case "Grade Point (4.0-0.0)": 
+        	return 2; 
+             
+        case "Letter Grade (A-F)": 
+        	return 3; 
+             
+        default: 
+            return 4; 
+		}
+	}
+	
+	public static int eventTypeConverter(String eventType) {
+		
+		switch (eventType) { 
+        case "University Course": 
+        	return 1; 
+             
+        case "Seminar": 
+        	return 2; 
+             
+        case "Certification Preparation Course": 
+        	return 3; 
+             
+        case "Certification": 
+        	return 4; 
+             
+        case "Technical Training": 
+        	return 5; 
+             
+        default: 
+            return 6; 
+		}
+             
+	}
+	
 	public static String gradingFormatConverter(int gradingFormatId) {
 		switch (gradingFormatId) { 
         case 1: 
@@ -154,8 +197,18 @@ public class RembursmentService {
 		}
 	}
 	
+	
+	
+	
+	//Getters
+	
+	public static List<Reimbursement> getallReimbforUserX(int userId) {
+		reimDOA = new ReimbursementDOAImpl();
+		return reimDOA.getAllReimbursementForUser(userId);
+	}
+	
 	public RembursmentService() {
-		// TODO Auto-generated constructor stub
+		reimDOA = new ReimbursementDOAImpl();
 	}
 
 }
