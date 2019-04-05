@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap 4 Website Example</title>
+  <title>Q-Systems Employee Profile Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -79,7 +79,7 @@
     <div class="col-sm-4">
       <h3 id="hellouser"></h3>
       <h5 id="userrole"></h5>
-      <div ><img id="empimg" src ="" style="width:250px;height:250px;></div>
+      <div ><img id="empimg" src ="" style="width:250px;height:250px;"></div>
       <div id="empinfo">
         <p id="empid"><b>Employee ID:</b></p>
         <div id="addressinfo">
@@ -87,10 +87,10 @@
           <p id="empcitystate"></p>
           <p id="empzip"></p>
         </div>
-        <p id="empemail"><b>Email:</b> <a style ="color:blue" class="email"  href="mailto:polochan2p@qsystems.com?subject = Feedback&body = Message"></a></p>
+        <p><b>Email:</b> <a style ="color:blue" class="email" id="empemail" href="mailto:polochan2p@qsystems.com?subject = Feedback&body = Message"></a></p>
         <div id="supervisorinfo">
           <p id="empsup"><b>Supervisor:</b> </p>
-          <a style ="color:blue" class="email" id="empsupemail" href="mailto:nculshaw2q@qsystems.com?subject = Feedback&body = Message"></a>
+          <div><b>Email:</b> <a style ="color:blue" class="email" id="empsupemail" href="mailto:nculshaw2q@qsystems.com?subject = Feedback&body = Message"></a></div>
         </div>
       </div>
       <br>
@@ -100,7 +100,7 @@
             <a class="nav-link active" href="app/home">My Homepage</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="newremb" href="form.html">Submit New Rembursment</a>
+            <a class="nav-link" id="newremb" href="form.html">Submit New Reimbursement</a>
           </li>
           <li class="nav-item" >
             <a class="nav-link" href="#">401k</a>
@@ -125,48 +125,36 @@
       <p>Be prepared to take notes, and more importantly have fun! This year's key-note speaker is Philip Ian Staker of MIT. He will be discussing quantum cryptography; How the quantum age will make guess-and-check attack on hashing algorythms possible, and the q-bit encyrption techniques which will be require to stay a step ahead.</p>
       <br>
       <div class="d-flex justify-content-center">
-        <h2>Rembersments Summary</h2>
+        <h2>Riembursements Summary</h2>
       </div>
       <div class="d-flex justify-content-center">
-        <h5>Rembersment Summary for 2019</h5>
+        <h5>Riembursement Summary for 2019</h5>
       </div>
-      <table class="table">
-        <thead class="thead-dark">
+
+      <div class="d-flex justify-content-center">
+      <!--  <small  style="color:green">Approved </small> <small  style="color:yellow">Pending </small> <small  style="color:red">Redacted</small> -->
+      </div>
+      <table id = "refinfo" class="table">
+        <thead class="thead-light">
           <tr>
             <th scope="col">Reference #</th>
             <th scope="col">Date Submitted</th>
-            <th scope="col">Amount</th>
+            <th scope="col">eventType</th>
             <th scope="col">Status</th>
+            <th scope="col">Refund</th>
+            <th scope="col">Action?</th>
           </tr>
         </thead>
-          <!--
-          <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-          -->
+
       </table>
-      <table class="table">
-        <thead class="thead-light">
+      <table id = "reftotals" class="table table-dark table-striped">
+        <thead>
           <tr>
-            <th scope="col"></th>
-            <th scope="col">Remaining Avaliable Funds</th>
-            <th scope="col">Total Rembursed</th>
+            <th scope="col">Avaliable Funds To Date</th>
+            <th scope="col">Total Reimbursed</th>
             <th scope="col">Total Pending</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row"></th>
-            <td id="remainingfunds"></td>
-            <td id="rembursedtotal"></td>
-            <td id="rembursedpending"></td>
-          </tr>
-        </tbody>
       </table>
       <!--
       TODO:
@@ -208,12 +196,57 @@ class User {
 	    }
 	}
 
+  class Reimb {
+
+  	   /**
+  	    *
+  	    * This is a helper class to establish a Reimbursement as an object as an object
+  	    * @param {int} reimbId;
+        * @param {int} status;
+      	* @param {int} userId;
+      	* @param {String} eventDateTime;
+      	* @param {String} createdDateTime;
+      	* @param {String} address;
+      	* @param {String} city;
+      	* @param {String} state;
+      	* @param {String} zip;
+      	* @param {String} eventType;
+      	* @param {String} description;
+      	* @param {String} gradingformat;
+      	* @param {double} cost;
+      	* @param {boolean} isMissingWorkTime;
+      	* @param {int} ballInCourtId;
+  	    */
+  	    constructor(reimbId,status,userId,eventDateTime,createdDateTime,address,city,state,zip,eventType,description,gradingformat,cost,isMissingWorkTime,ballInCourtId) {
+          this.reimbId = reimbId;
+          this.status = status;
+        	this.userId = userId;
+        	this.eventDateTime = eventDateTime;
+        	this.createdDateTime = createdDateTime;
+        	this.address = address;
+        	this.city = city;
+        	this.state = state;
+        	this.zip = zip;
+        	this.eventType = eventType;
+        	this.description = description;
+        	this.gradingformat = gradingformat;
+        	this.cost = cost;
+        	this.isMissingWorkTime = isMissingWorkTime;
+        	this.ballInCourtId = ballInCourtId;
+
+  	    }
+  	}
 
 
 
 
 	var user = new User();
 	var sup = new User();
+  var reimb = new Reimb();
+  var reimbArray = {};
+  var avaliableBalance = 1000;
+  var prt = 0; //pending remburment total
+  var frt = 0; //finalized rembursment total
 
 function empLevelToUserRole(empLevel){
  //x1 standard employee //x2 supervisor //x3 department head
@@ -267,21 +300,167 @@ function empLevelToUserRole(empLevel){
 
 }
 
-function getBenefitsInfo(){
+function statustoString(status){
+  //1x flagged by manager for resubmission //2x supervision approval pending
+  	//3x dh approval pending //4x bc approval pending
+  	//x1 preaproval phase //x2 graded //x3 Redacted/rejected //44 Refund success
+ var statusInfo ="";
+   switch (status) {
+     case 11:
+       statusInfo = "pre-approval : needs more info ";
+       break;
+     case 12:
+       statusInfo = "pre-approval : awaiting supervisor review";
+       break;
+     case 13:
+       statusInfo = "pre-approval : awaiting department-head review";
+       break;
+     case 14:
+       statusInfo = "pre-approval : awaiting Ben-Co review";
+       break;
+     case 22:
+      statusInfo = "graded : awaiting supervisor approval";
+       break;
+     case 23:
+       statusInfo = "graded : awaiting department-head signoff";
+       break;
+     case  21:
+       statusInfo = "incomplete : more info / next steps in <a href='https://drive.google.com/drive/u/0/folders/18riWr9g150ai0HMHvwIrJNiJnRNow_vx' target='_blank'>sumbission file</a>" ;
+       break;
+     case 31:
+       statusInfo = "redacted by you";
+       break;
+     case 32:
+       statusInfo = "rejected by supervisor : see <a href='https://drive.google.com/drive/u/0/folders/18riWr9g150ai0HMHvwIrJNiJnRNow_vx' target='_blank'>sumbission file</a>  for details";
+       break;
+     case 33:
+       statusInfo = "rejected by department-head : see <a href='https://drive.google.com/drive/u/0/folders/18riWr9g150ai0HMHvwIrJNiJnRNow_vx' target='_blank'>sumbission file</a>  for details";
+       break;
+     case 34:
+       statusInfo = "rejected by Ben-Co : see <a href='https://drive.google.com/drive/u/0/folders/18riWr9g150ai0HMHvwIrJNiJnRNow_vx' target='_blank'>sumbission file</a>  for details";
+       break;
+     case 44:
+       statusInfo = "Refund Approved!";
+       break;
+
+ }
+ return statusInfo;
+
+}
+
+
+
+
+
+
+
+
+
+
+var value=0;
+function  tableFill(reimb_param,status) {
+    //event.preventDefault();
+
+
+    var table = document.getElementById("refinfo");
+    var row = table.insertRow(1);
+    row.id = reimb_param.rembId+'row';
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    var cell6 = row.insertCell(5);
+    /*
+    <button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-danger">Danger</button>
+*/
+
+
+    
+
+    value = Math.min(reimb_param.cost,avaliableBalance);
+    if(Math.floor(status/10)<=3){
+
+      row.class ="table-warning"
+      cell6.innerHTML = "<button type='button'; class='btn btn-danger'>Redact sumbission</button>";
+      prt += value
+      document.getElementById(reimb_param.rembId+"row").addEventListener("click",()=>{ softDelete(reimb_param.rembId)});
+    }else if(Math.floor(status/10)==5){
+      frt += value
+      
+      cell6.innerHTML = "<button type='button'; class='btn btn-info'>Info</button>";
+      document.getElementbyId(reimb_param.rembId+'row').setAttribute("class","table-danger");
+
+    }else{
+      
+    	cell6.innerHTML = "<button type='button'; class='btn btn-info'>Info</button>";
+      row.class = "table-success";
+    }
+    avaliableBalance= 1000-frt-prt;
+
+
+
+
+
+
+
+
+    cell1.innerHTML = reimb_param.rembId;
+    cell2.innerHTML = reimb_param.createdDateTime;
+    cell3.innerHTML = reimb_param.eventType;
+    cell4.innerHTML = statustoString(reimb_param.status);
+    cell5.innerHTML =  '$'+value;
+    
+
+	value=0;
+
+}
+
+
+function softDelete(reimbId_param) {
+  document.getElementById(reimbId_param+'row');
+}
+
+
+
+
+
+function populateTable(user){
 //Step 1. Create XHR
 let xhr = new XMLHttpRequest();
+//avaliableBalance = 1000-prf -frt;
 
 //Step 2. Define event handler of on ready state change
    xhr.onreadystatechange = function(){
 
      if (xhr.readyState === 4 && xhr.status === 200){
 
-        bene = JSON.parse(xhr.responseText);
+        reimbArray = JSON.parse(xhr.responseText);
+
+        for(reee in reimbArray){
+        	r=reimbArray[reee];
+        	console.log(r);
+          tableFill(r,r.status);
+        }
+        let tbl = document.getElementById("reftotals");
+        let rw = tbl.insertRow(1);
+        let cl1 = rw.insertCell(0);
+        let cl2 = rw.insertCell(1);
+        let cl3 = rw.insertCell(2);
+        cl1.innerHTML = '$'+avaliableBalance;
+        cl2.innerHTML = '$'+frt;
+        cl3.innerHTML = '$'+prt;
+
+
+
       }
 
   }
 
-  xhr.open("GET", "/Project1/app/user", true);
+  xhr.open("GET", "app/xbenefits/" +user.userId, true);
   xhr.send();
  }
 
@@ -300,9 +479,8 @@ let xhr = new XMLHttpRequest();
           //
 
          document.getElementById("empsup").innerHTML = "<b>Supervisor:</b> "+sup.firstname +" "+sup.lastname;
-         //sup email info
-         document.getElementById("empemail").innerHTML = "<b>Email:</b> "+user.email;
-         document.getElementById("empemail").href = user.email;
+         document.getElementById("empsupemail").innerHTML = sup.email;
+         document.getElementById("empsupemail").href = "mailto:"+sup.email+"?subject = Feedback&body = Message";
 
         }
 
@@ -344,9 +522,10 @@ let xhr = new XMLHttpRequest();
 	      	  document.getElementById("empzip").innerHTML= addressArray[2];
 
          //email info
-          document.getElementById("empemail").innerHTML = "<b>Email:</b> "+user.email;
-         document.getElementById("empemail").href = user.email;
+          document.getElementById("empemail").innerHTML = user.email;
+          document.getElementById("empemail").href = "mailto:"+user.email+"?subject = Feedback&body = Message";
 	            console.log(user);
+          populateTable(user)
 
 	        }
 
@@ -359,12 +538,12 @@ let xhr = new XMLHttpRequest();
 
 	window.onload = function(){
 		populateUser();
-		
-		
+
+
 	};
 
 
-	  
+
 
 	  //WARNING: LOOKOUT FOR THIS METHOD, likely can be optimized first place
 	  //to look if slow on load
@@ -373,3 +552,4 @@ let xhr = new XMLHttpRequest();
 </script>
 </body>
 </html>
+2

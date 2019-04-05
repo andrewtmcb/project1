@@ -9,6 +9,7 @@ import com.revature.servlets.LogoutServlet;
 import com.revature.servlets.PageNotFoundServlet;
 import com.revature.servlets.RedirectServlet;
 import com.revature.servlets.UserServlet;
+import com.revature.servlets.XBenefitsServlet;
 import com.revature.servlets.XUserServlet;
 
 public class RequestHelper {
@@ -21,6 +22,7 @@ public class RequestHelper {
 	private static HttpServlet redirectServlet = new RedirectServlet();
 	private static HttpServlet pnfServlet = new PageNotFoundServlet();
 	private static HttpServlet logoutServlet = new LogoutServlet();
+	private static HttpServlet xbenefitsServlet = new XBenefitsServlet();
 	
 	
 	private static final String PREFIX = "/qa/app/";
@@ -57,12 +59,12 @@ public class RequestHelper {
 		break;
 			
 		default: 
-			if (path.matches(PREFIX + "xuser/"+"[1-9][1-9]")||path.matches(PREFIX + "xuser/"+"[1-9]")) {
+			if (path.matches(PREFIX + "xuser/"+"[1-9][0-9]")||path.matches(PREFIX + "xuser/"+"[0-9]*")) {
 				nextServlet = xuserServlet;
 				break;
             }
-			if (path.matches(PREFIX + "benefits/"+"[1-9][1-9]")||path.matches(PREFIX + "benefits/"+"[1-9]*")) {
-				nextServlet = benefitsServlet;
+			if (path.matches(PREFIX + "xbenefits/"+"[1-9][0-9]")||path.matches(PREFIX + "xbenefits/"+"[0-9]*")) {
+				nextServlet = xbenefitsServlet;
 				break;
             }
 			nextServlet = pnfServlet;
