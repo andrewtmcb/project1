@@ -43,7 +43,7 @@ public class ReimbursementDOAImpl implements ReimbursementDOA {
 			ps.setInt(1, userId);
 			ResultSet rs =  ps.executeQuery();
 			
-			if(rs.next())
+			while(rs.next())
 			{
 				reimb = null;
 				reimb = new Reimbursement();

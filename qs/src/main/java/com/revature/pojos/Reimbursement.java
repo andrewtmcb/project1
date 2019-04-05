@@ -7,9 +7,9 @@ public class Reimbursement {
 	//formula UserId,SupId,
 	private String rembId;
 	
-	//1x flagged by manager for resubmission //2x supervison approval pending
+	//1x flagged by manager for resubmission //2x supervision approval pending
 	//3x dh approval pending //4x bc approval pending
-	//x1 preaproval phase //x2 graded
+	//x1 preaproval phase //x2 graded //x3 Redacted
 	private int status;
 	private int userId;
 	private String eventDateTime;

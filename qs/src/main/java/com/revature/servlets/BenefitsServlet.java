@@ -79,7 +79,7 @@ public class BenefitsServlet extends HttpServlet {
 					reimbServ.persistReimbursement(reimb);
 					response.getWriter().write("<h1>Eureka! your request has been submitted.</h1><br><a href=\"https://localhost:8080/qa/app/emphome\">Home Page</a>");
 				}else {
-					response.getWriter().write("<h1>HTTP 40InvalidDate </h1><br><a href=\"https://localhost:8080/qa/app/emphome\">Home Page</a> <br> <a href=\"https://localhost:8080/qa/form.html\">Resubmit form</a>  <br>"
+					response.getWriter().write("<h1>HTTP 40InvalidDate </h1><br><a href=\"http://localhost:8080/qa/app/emphome\">Home Page</a> <br> <a href=\"https://localhost:8080/qa/form.html\">Resubmit form</a>  <br>"
 							+ "+ <p>If you feel that you are here by accident please contact our webmaster <br> <a href=\"mailto:andrew.mcbrayer@qsystems.com\">andrew.mcbrayer@qsystems.com</a> </p> ");
 				}
 			} catch (ParseException e) {

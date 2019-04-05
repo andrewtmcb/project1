@@ -17,11 +17,15 @@ import com.revature.services.RembursmentService;
 public class XBenefitsServlet extends HttpServlet {
 	List <Reimbursement> allReimbforUserX = new ArrayList<>();
 
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getPathInfo();
 		System.out.println(id.substring(11));
 		allReimbforUserX = RembursmentService.getallReimbforUserX(Integer.valueOf(id.substring(11)));
+		for( Reimbursement r: allReimbforUserX) {
+			r.toString();
+		}
 		ObjectMapper om = new ObjectMapper();
 		String reimbArray = om.writeValueAsString(allReimbforUserX);
 		//resp.setContentType("application/json");
