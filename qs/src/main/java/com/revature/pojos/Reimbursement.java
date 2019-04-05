@@ -1,5 +1,7 @@
 package com.revature.pojos;
 
+import com.revature.services.RembursmentService;
+
 public class Reimbursement {
 
 	//formula UserId,SupId,
@@ -83,9 +85,10 @@ public class Reimbursement {
 		return eventType;
 	}
 	
-	public void setEventType(String eventType) {
-		this.eventType = eventType;
+	public void setEventType(int eventTypeId) {
+		this.eventType = RembursmentService.eventTypeConverter(eventTypeId);
 	}
+	
 	
 	public String getDescription() {
 		return description;
@@ -99,8 +102,8 @@ public class Reimbursement {
 		return gradingformat;
 	}
 	
-	public void setGradingformat(String gradingformat) {
-		this.gradingformat = gradingformat;
+	public void setGradingformat(int gradingformatId) {
+		this.gradingformat = RembursmentService.gradingFormatConverter(gradingformatId);
 	}
 	
 	public double getCost() {
@@ -254,7 +257,7 @@ public class Reimbursement {
 		this.eventType = eventType;
 		this.description = description;
 		this.gradingformat = gradingformat;
-		this.cost = cost;
+		this.cost = Math.round(cost*100)/100;
 		this.isMissingWorkTime = isMissingWorkTime;
 		this.ballInCourtId = ballInCourtId;
 	}

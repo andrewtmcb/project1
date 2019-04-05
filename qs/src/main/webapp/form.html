@@ -134,6 +134,9 @@
       <label class="col-md-4 control-label" for="sdt">Start Date/Time</label>
       <div class="col-md-4">
      <input class="form-control" name ="eventdatetime"type="datetime-local" value="2019-05-04T13:45:00" class="form-control input-md">
+	<small style="color:red" id="dateHelpBlock" class="form-text text-muted">
+
+    </small>    
     </div>
   </div>
 
@@ -145,9 +148,6 @@
     <label class="col-md-4 control-label" for="eventaddress">Event Address</label>
     <div class="col-md-5">
     <input id="eventaddress" name="eventaddress" type="text" placeholder="12345 south east street" class="form-control input-md" required="required">
-    <small id="dateHelpBlock" class="form-text text-muted">
-
-    </small>
     </div>
   </div>
 
@@ -296,7 +296,7 @@
       });
 
       document.getElementById("ispreapproved").addEventListener('click',function(){
-        document.getElementById("includeMSGReminder").innerHTML = "ATTENTION: If not .msg file is not uploaded to google docs, your submission will be rejected";
+        document.getElementById("includeMSGReminder").innerHTML = "ATTENTION: If .msg file IS NOT uploaded to google docs, your submission will be REJECTED";
       });
     });
 

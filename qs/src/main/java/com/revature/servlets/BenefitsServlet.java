@@ -1,6 +1,8 @@
 package com.revature.servlets;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -57,12 +59,33 @@ public class BenefitsServlet extends HttpServlet {
 		Double cost = Double.valueOf(request.getParameter("cost"));
 		String workjst = request.getParameter("workjst");
 		Boolean ismissingwork = Boolean.valueOf(request.getParameter("ismissingwork"));
+		Boolean ispreapproved = Boolean.valueOf(request.getParameter("ispreapproved"));
+		
+		if(ispreapproved) {eventdisc+= "ALERT: Preapproval Claimed";};
+		//create Object
 		Reimbursement reimb = new Reimbursement("", status, userId, request.getParameter("eventdatetime"),strDate ,
-		eventaddress, city, state, zip, eventType, eventdisc,
-		gradingformat, cost, ismissingwork, 2);
+		eventaddress, city, state, zip, RembursmentService.eventTypeConverter(Integer.valueOf(eventType)), eventdisc,
+		RembursmentService.eventTypeConverter(Integer.valueOf(gradingformat)), cost, ismissingwork, 2);
 		System.out.println(reimb.toString());
-		//reimbServ.persistReimbursement(reimb);
-		response.getWriter().write("<h1>Eureka, your request has been submitted</h1><br><a href=\"https://localhost:8080/qa/app/emphome\">Home Page</a>");
+		
+		//Persist
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+			 try {
+				Date date = dateFormat.parse("2017-04-26T20:55:00.000Z");
+				System.out.println(date.compareTo(now));
+				if(date.compareTo(now)<=0) {
+					reimbServ.persistReimbursement(reimb);
+					response.getWriter().write("<h1>Eureka! your request has been submitted.</h1><br><a href=\"https://localhost:8080/qa/app/emphome\">Home Page</a>");
+				}else {
+					response.getWriter().write("<h1>HTTP 40InvalidDate </h1><br><a href=\"https://localhost:8080/qa/app/emphome\">Home Page</a> <br> <a href=\"https://localhost:8080/qa/form.html\">Resubmit form</a>  <br>"
+							+ "+ <p>If you feel that you are here by accident please contact our webmaster <br> <a href=\"mailto:andrew.mcbrayer@qsystems.com\">andrew.mcbrayer@qsystems.com</a> </p> ");
+				}
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 	}
 	
 	

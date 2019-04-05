@@ -60,8 +60,98 @@ public class RembursmentService {
 		return bcId;
 	}
 	
+	public static String eventTypeConverter(int eventTypeId) {
+		
+		switch (eventTypeId) { 
+        case 1: 
+        	return "University Course"; 
+             
+        case 2: 
+        	return "Seminar"; 
+             
+        case 3: 
+        	return "Certification Preparation Course"; 
+             
+        case 4: 
+        	return "Certification"; 
+             
+        case 5: 
+        	return "Technical Training"; 
+             
+        default: 
+            return "Other"; 
+		}
+             
+	}
+	
+	public static double calculateRefund(int eventTypeId, double cost) {
+		
+		switch (eventTypeId) { 
+        case 1: 
+        	return cost*0.8; 
+             
+        case 2: 
+        	return cost*0.6; 
+             
+        case 3: 
+        	return cost*0.75; 
+             
+        case 4: 
+        	return cost*1.00; 
+             
+        case 5: 
+        	return cost*0.9; 
+             
+        default: 
+            return cost*0.3; 
+		}
+             
+	}
+	
+	public static double calculateRefund(String eventType, double cost) {
+		
+		switch (eventType) { 
+        case "University Course": 
+        	return cost*0.8; 
+             
+        case "Seminar": 
+        	return cost*0.6; 
+             
+        case "Certification Preparation Course": 
+        	return cost*0.75; 
+             
+        case "Certification": 
+        	return cost*1.00; 
+             
+        case "Technical Training": 
+        	return cost*0.9; 
+             
+        default: 
+            return cost*0.3; 
+		}
+             
+	}
+	
 	public void persistReimbursement(Reimbursement reimb) {
 		reimDOA.createReimbursement(reimb);
+	}
+	
+	
+
+	public static String gradingFormatConverter(int gradingFormatId) {
+		switch (gradingFormatId) { 
+        case 1: 
+        	return "Pass/Fail"; 
+             
+        case 2: 
+        	return "Grade Point (4.0-0.0)"; 
+             
+        case 3: 
+        	return "Letter Grade (A-F)"; 
+             
+        default: 
+            return "No Grading Format"; 
+		}
 	}
 	
 	public RembursmentService() {
