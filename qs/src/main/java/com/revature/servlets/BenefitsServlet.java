@@ -33,7 +33,7 @@ public class BenefitsServlet extends HttpServlet {
 		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//dd/MM/yyyy
 	    Date now = new Date();
 	    String strDate = sdfDate.format(now);
-	   
+	    int status = 12;//awaiting sup approval
 		
 		
 		HttpSession sess = request.getSession(false);
@@ -41,6 +41,9 @@ public class BenefitsServlet extends HttpServlet {
 		int userId = Integer.valueOf(request.getParameter("userId"));
 		if (userId != user.getUserId()) {
 			response.getWriter().write("<h1>HTTP 500</h1><br><h3>YOU CAN NOT FILL OUT A REIMBURSEMENT REQUEST FOR OTHER USERS</h3>");
+		}
+		if (user.getEmpLevel()/10==1&& Boolean.valueOf(request.getParameter("ispreapproved"))) {
+			status = 13;//awaiting dephead approval
 		}
 		//writing out parameters from post
 		String eventType = request.getParameter("eventType");
@@ -54,7 +57,7 @@ public class BenefitsServlet extends HttpServlet {
 		Double cost = Double.valueOf(request.getParameter("cost"));
 		String workjst = request.getParameter("workjst");
 		Boolean ismissingwork = Boolean.valueOf(request.getParameter("ismissingwork"));
-		Reimbursement reimb = new Reimbursement("", 1, userId, request.getParameter("eventdatetime"),strDate ,
+		Reimbursement reimb = new Reimbursement("", status, userId, request.getParameter("eventdatetime"),strDate ,
 		eventaddress, city, state, zip, eventType, eventdisc,
 		gradingformat, cost, ismissingwork, 2);
 		System.out.println(reimb.toString());
